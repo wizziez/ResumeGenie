@@ -1,33 +1,140 @@
-<!doctype html>
-<html class="no-js" lang="">
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
-  <link rel="stylesheet" href="css/style.css">
-  <meta name="description" content="">
-
-  <meta property="og:title" content="">
-  <meta property="og:type" content="">
-  <meta property="og:url" content="">
-  <meta property="og:image" content="">
-  <meta property="og:image:alt" content="">
-
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="icon" href="/icon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="icon.png">
-
-  <link rel="manifest" href="site.webmanifest">
-  <meta name="theme-color" content="#fafafa">
+    <meta charset="UTF-8">
+    <!-- Enhance mobile viewport settings -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="theme-color" content="#2b6cb0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>ResumeGenie - AI Resume Builder</title>
+    <!-- Add preload script to prevent flash of wrong theme -->
+    <script>
+        // Immediately apply the correct theme on page load
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark-mode');
+        }
+    </script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="mobile-fixes.css">
+    <!-- Remove the banner style -->
 </head>
-
 <body>
+    <!-- Remove the banner div -->
+    
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><i class="fa-solid fa-wand-magic-sparkles"></i> <span>ResumeGenie</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="resume-builder.html" class="cta-button">Build Resume</a></li>
+                </ul>
+                <!-- Dark mode toggle will be inserted here by JavaScript -->
+            </nav>
+        </div>
+    </header>
 
-  <!-- Add your site or application content here -->
-  <p>Hello world! This is HTML5 Boilerplate.</p>
-  <script src="js/app.js"></script>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Create Professional Resumes</h1>
+                <p>Let ResumeGenie's AI craft your perfect resume that stands out to employers.</p>
+                <div class="cta-group">
+                    <a href="resume-builder.html" class="cta-button primary-cta">Get Started <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="#how-it-works" class="text-link">Learn how</a>
+                </div>
+            </div>
+            <div class="hero-decoration">
+                <div class="floating-element"><i class="fa-solid fa-file-lines"></i></div>
+                <div class="floating-element"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                <div class="floating-element"><i class="fa-solid fa-check"></i></div>
+            </div>
+        </div>
+    </section>
 
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose ResumeGenie</h2>
+                <p class="subtitle">Our platform provides everything you need to create the perfect resume</p>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-sparkles"></i></div>
+                    <h3>AI-Powered</h3>
+                    <p>Our advanced AI analyzes job markets to create optimized resumes that get noticed by recruiters.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-rocket"></i></div>
+                    <h3>Fast & Easy</h3>
+                    <p>Create a professional resume in minutes, not hours. Our intuitive interface makes it simple.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-palette"></i></div>
+                    <h3>Elegant Designs</h3>
+                    <p>Choose from beautiful templates that catch employers' attention while maintaining professional standards.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-chart-line"></i></div>
+                    <h3>ATS Friendly</h3>
+                    <p>Optimized to pass Applicant Tracking Systems for higher success rates in your job applications.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="how-it-works">
+        <div class="shape shape-3"></div>
+        <div class="container">
+            <div class="section-header">
+                <h2>How It Works</h2>
+                <p class="subtitle">Three simple steps to create your professional resume</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Enter Your Information</h3>
+                    <p>Fill in your personal details, skills, and experience through our user-friendly form.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>AI Enhancement</h3>
+                    <p>Our AI analyzes and enhances your information to highlight your strengths and achievements.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Download Your Resume</h3>
+                    <p>Get a professionally designed resume ready to impress employers and land interviews.</p>
+                </div>
+            </div>
+            <div class="cta-center">
+                <a href="resume-builder.html" class="cta-button">Build Your Resume Now <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2><i class="fa-solid fa-wand-magic-sparkles"></i></h2>
+                    <!-- Removed "ResumeGenie" and assistant text -->
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 ResumeGenie | Powered by AI</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
-
 </html>

@@ -1,0 +1,650 @@
+/* Mobile-specific enhancements for ResumeGenie */
+
+/* iOS-specific fixes */
+.ios-device {
+    -webkit-overflow-scrolling: touch;
+}
+
+.ios-device input,
+.ios-device textarea {
+    font-size: 16px !important; /* Prevents zoom on focus in iOS */
+}
+
+/* Mobile touch improvements */
+@media (max-width: 768px) {
+    /* Increase spacing for touch targets */
+    .cta-button, 
+    .secondary-button,
+    button.prev-btn,
+    button.next-btn,
+    button.submit-btn {
+        padding: 0.85rem 1.5rem;
+        min-height: 44px; /* Apple's recommended minimum */
+    }
+    
+    /* Make progress steps more touchable */
+    .progress-step {
+        width: 44px;
+        height: 44px;
+        margin: 0 0.5rem;
+    }
+    
+    /* Mobile-friendly form spacing */
+    .form-group {
+        margin-bottom: 2rem;
+    }
+    
+    /* Adjust font sizes for small screens */
+    .form-step h2 {
+        font-size: 1.5rem;
+    }
+    
+    .form-group label {
+        font-size: 0.95rem;
+    }
+    
+    /* Fix scrolling issues */
+    .form-container {
+        -webkit-overflow-scrolling: touch;
+        overflow-x: hidden;
+        transform: translateZ(0); /* Force hardware acceleration */
+        position: relative;
+        z-index: 1;
+    }
+    
+    /* Fix sticky header issues */
+    header {
+        position: -webkit-sticky; /* For older iOS */
+    }
+    
+    /* Better mobile table display for resume output */
+    #resume-preview table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Make resume font slightly smaller on mobile */
+    #resume-preview {
+        font-size: 0.95rem;
+    }
+    
+    /* Fix tap highlight color - needs !important to override browser defaults */
+    a, button, input[type="button"], input[type="submit"] {
+        -webkit-tap-highlight-color: transparent !important;
+        outline: none;
+    }
+    
+    /* Enhance dark mode visibility on mobile */
+    @media (prefers-color-scheme: dark) {
+        input, textarea, select {
+            background-color: #2d3748 !important; /* Darker background for inputs */
+            color: #e2e8f0 !important;
+        }
+        
+        input::placeholder, textarea::placeholder {
+            color: #718096 !important;
+        }
+    }
+    
+    /* Bottom navigation for mobile */
+    .bottom-nav {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: var(--background-light);
+        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        padding: 10px 0;
+    }
+    
+    /* Fix for form containers - prevent horizontal overflow */
+    .education-entry, .experience-entry {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+    
+    /* Prevent horizontal overflow on small screens */
+    .resume-container {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+    
+    /* Improve input selection on mobile */
+    input, textarea, select {
+        -webkit-appearance: none; /* Remove iOS default styling */
+        border-radius: var(--border-radius);
+    }
+    
+    /* Make buttons easier to tap and provide visual feedback */
+    .remove-btn, .add-btn {
+        padding: 8px 12px;
+        margin: 5px 0;
+    }
+    
+    /* Improve mobile scrolling on long forms */
+    body {
+        overscroll-behavior-y: none;
+    }
+    
+    /* Fix iOS form element appearance */
+    input[type="month"] {
+        padding-right: 0.5rem;
+        min-height: 44px; /* Better touch target */
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+}
+
+/* Menu adjustments for very small screens */
+@media (max-width: 480px) {
+    .logo h1 {
+        font-size: 1.2rem; /* Make the logo even smaller */
+    }
+    
+    header .container {
+        flex-direction: row; /* Keep header in a row */
+        align-items: center;
+        padding: 0.8rem 10px;
+    }
+    
+    nav ul {
+        gap: 0.5rem;
+    }
+    
+    nav ul li a {
+        font-size: 0.85rem;
+    }
+    
+    /* Reduce white space in forms */
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Adjust padding for small screens */
+    .form-container {
+        padding: 1.2rem;
+    }
+    
+    /* Prevent zoom on input focus */
+    input, textarea, select {
+        font-size: 16px !important;
+    }
+    
+    /* Increase tap targets */
+    .checkbox-group label {
+        padding: 8px 0;
+        min-height: 44px;
+    }
+    
+    /* Make submit buttons more prominent */
+    button.submit-btn {
+        font-size: 1.1rem;
+        padding: 12px 16px;
+    }
+    
+    /* Optimize form entry spacing */
+    .education-entry, .experience-entry {
+        padding: 1.2rem 0.8rem;
+        margin-bottom: 1.2rem;
+    }
+    
+    /* Fix spacing issues in the resume result */
+    #resume-preview ul {
+        padding-left: 20px;
+        margin: 0.5rem 0;
+    }
+    
+    #resume-preview p {
+        margin: 0.5rem 0;
+    }
+    
+    /* Make sure all content is visible */
+    .resume-container {
+        overflow-wrap: break-word;
+        word-break: break-word;
+    }
+    
+    /* Fix month input on mobile */
+    input[type="month"] {
+        min-width: 100%;
+    }
+    
+    /* Better UI messaging */
+    .loading-indicator {
+        width: 90%;
+        max-width: 300px;
+    }
+}
+
+/* Better landscape mode handling */
+@media screen and (orientation: landscape) and (max-height: 500px) {
+    header {
+        position: absolute;
+    }
+    
+    .form-section {
+        padding-top: 7rem;
+    }
+    
+    .form-container {
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+    
+    /* Add bottom padding to avoid buttons being hidden */
+    .form-step {
+        padding-bottom: 60px;
+    }
+    
+    /* Fix for focusable elements being hidden under keyboard */
+    input:focus, textarea:focus, select:focus {
+        position: relative;
+        z-index: 2;
+    }
+}
+
+/* Dark mode specific mobile enhancements */
+@media (prefers-color-scheme: dark) {
+    .ios-device {
+        background-color: #0f141e; /* Match the dark mode background */
+    }
+    
+    /* Reduce brightness of elements in dark mode */
+    img {
+        filter: brightness(0.9);
+    }
+    
+    /* Better dark mode scrollbars */
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: #2d3748;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: #4a5568;
+        border-radius: 4px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        background: #5d8aa8;
+    }
+}
+
+/* Enhance dark mode visibility on mobile */
+body.dark-mode input, 
+body.dark-mode textarea, 
+body.dark-mode select {
+    background-color: var(--gray-light) !important; /* Darker background for inputs */
+    color: var(--text-dark) !important;
+    border-color: var(--gray-medium);
+}
+
+body.dark-mode input::placeholder, 
+body.dark-mode textarea::placeholder {
+    color: var(--gray-dark) !important;
+}
+
+/* Fix mobile dark mode toggle position - updated without hamburger menu */
+@media (max-width: 640px) {
+    /* Position theme toggle at the right edge */
+    .theme-toggle {
+        position: absolute;
+        right: 15px; /* Moved from 60px to 15px since there's no hamburger button */
+        top: 12px;
+    }
+    
+    /* When menu is open, keep toggle visible */
+    nav ul.active + .theme-toggle {
+        top: 12px;
+        z-index: 102; /* Above the menu */
+    }
+    
+    /* Enhance logo as primary navigation element */
+    .logo {
+        position: relative;
+        z-index: 101;
+        flex-grow: 1;
+        text-align: left;
+    }
+    
+    .logo a.home-link {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        margin: -10px; /* Expand tap target */
+        position: relative;
+        z-index: 102;
+    }
+    
+    /* Visual indicator that logo is tappable */
+    .logo a.home-link::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 100%;
+        height: 2px;
+        background-color: var(--primary-color);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+    
+    .logo a.home-link:active::after,
+    .logo a.home-link:focus::after {
+        transform: scaleX(1);
+    }
+    
+    /* Add ripple effect styles */
+    .logo a.home-link {
+        overflow: hidden;
+    }
+    
+    .ripple-effect {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        transform: scale(0);
+        animation: ripple 0.6s linear;
+        pointer-events: none;
+    }
+    
+    @keyframes ripple {
+        to {
+            transform: scale(3);
+            opacity: 0;
+        }
+    }
+    
+    /* Adjust logo icon size for better tapping */
+    .logo h1 i {
+        font-size: 1.8rem;
+        margin-right: 8px;
+    }
+    
+    /* Change nav display for mobile without hamburger button */
+    nav ul {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        background: var(--background-light);
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+        box-shadow: var(--box-shadow);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 99;
+        overflow: hidden;
+        max-height: 0;
+    }
+    
+    nav ul.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+        padding: 1rem 0;
+        max-height: 300px;
+    }
+    
+    nav ul li {
+        width: 100%;
+        text-align: center;
+    }
+    
+    nav ul li a {
+        display: block;
+        padding: 0.75rem;
+        font-size: 1.1rem;
+    }
+    
+    /* Show a subtle indicator that tapping header area toggles the menu */
+    header::after {
+        content: "";
+        position: absolute;
+        bottom: 5px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 30px;
+        height: 3px;
+        background-color: var(--gray-medium);
+        border-radius: 10px;
+        opacity: 0.6;
+    }
+    
+    /* Visual feedback when logo is tapped */
+    .logo a.tapped h1 i {
+        transform: scale(1.2);
+        color: var(--primary-color);
+    }
+}
+
+/* Fix mobile dark mode toggle position */
+@media (max-width: 640px) {
+    .theme-toggle {
+        position: absolute;
+        right: 60px;
+        top: 12px;
+    }
+    
+    /* When menu is open, move toggle to avoid overlap */
+    nav ul.active + .theme-toggle {
+        top: 12px;
+    }
+    
+    /* Make menu toggle easier to tap */
+    .menu-toggle {
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* Better drawer menu */
+    nav ul.active {
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        padding: 1rem 0;
+    }
+    
+    nav ul.active li {
+        padding: 0.8rem 1rem;
+    }
+    
+    nav ul.active li a {
+        font-size: 1.1rem;
+    }
+    
+    /* Improve logo clickability on mobile */
+    @media (max-width: 640px) {
+        /* Make the home logo easier to tap and more visible */
+        .logo a {
+            display: block;
+            padding: 8px;
+            margin: -8px;  /* Extend clickable area without changing visual size */
+        }
+        
+        /* Ensure the icon is clearly visible and tappable */
+        .logo h1 i {
+            font-size: 1.8rem; /* Slightly larger icon on mobile */
+        }
+        
+        /* Add a subtle indicator that it's a home button in mobile view */
+        .logo a::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 4px;
+            pointer-events: none; /* Don't interfere with clicking */
+            transition: background-color 0.2s;
+        }
+        
+        .logo a:active::before {
+            background-color: rgba(0, 0, 0, 0.05); /* Visual feedback on tap */
+        }
+        
+        /* Fix position related issues */
+        .logo {
+            position: relative;
+            z-index: 101; /* Higher than the menu */
+        }
+    }
+}
+
+/* Make sure the dark/light mode transition is smooth on mobile */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode * {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Dark mode scrollbar styles for mobile */
+body.dark-mode ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+body.dark-mode ::-webkit-scrollbar-track {
+    background: var(--gray-light);
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb {
+    background: var(--gray-medium);
+    border-radius: 4px;
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
+
+/* Fix for input fields being hidden under keyboard on mobile */
+input:focus, textarea:focus, select:focus {
+    transform: translateY(0) !important; 
+    box-shadow: 0 0 0 2px rgba(61, 90, 128, 0.1);
+}
+
+/* Virtual keyboard adjustments */
+@media screen and (max-height: 450px) {
+    .form-container {
+        padding-bottom: 60px; /* Add extra space at the bottom */
+    }
+}
+
+/* Better form display on small screens */
+@media (max-width: 360px) {
+    .form-row {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .form-group.half {
+        width: 100%;
+    }
+}
+
+/* Improved touch targets for form controls on smaller devices */
+@media (max-width: 360px) {
+    .checkbox-group input[type="checkbox"] {
+        transform: scale(1.2);
+    }
+    
+    .input-with-icon i {
+        left: 0.8rem;
+    }
+    
+    .input-with-icon input {
+        padding-left: 2.2rem;
+    }
+}
+
+/* Fix for modals and dialogs not displaying correctly on some devices */
+@supports (-webkit-touch-callout: none) {
+    /* iOS specific - fixes position: fixed issues */
+    .loading-indicator {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50vh;
+    }
+    
+    /* Fix vh units on iOS */
+    .hero, .features, .how-it-works, .form-section, .result-section {
+        min-height: -webkit-fill-available;
+    }
+    
+    /* Fix position fixed issues on iOS */
+    .theme-toggle, .menu-toggle {
+        position: absolute;
+    }
+    
+    /* Fix iOS input styling */
+    input, textarea, select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+    
+    /* iOS specific handling for month inputs */
+    input[type="month"] {
+        line-height: normal !important;
+    }
+}
+
+/* Fix resize on rotation */
+@media screen and (orientation: landscape) {
+    .form-container {
+        height: auto;
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+}
+
+/* Fix for iPhone X and later models with notches */
+@supports (padding: max(0px)) {
+    @media screen and (orientation: portrait) {
+        header {
+            padding-left: env(safe-area-inset-left);
+            padding-right: env(safe-area-inset-right);
+        }
+        
+        .sticky-action-buttons {
+            padding-bottom: max(12px, env(safe-area-inset-bottom));
+        }
+    }
+}
+
+/* Better pinch zoom behavior for the resume */
+#resume-preview {
+    touch-action: pan-y pinch-zoom;
+}
+
+/* Fix position sticky issues on iOS */
+@supports (-webkit-overflow-scrolling: touch) {
+    .form-buttons {
+        position: -webkit-sticky;
+        position: sticky;
+    }
+    
+    /* Fix sticky headers on iOS */
+    header {
+        position: -webkit-sticky;
+        position: sticky;
+    }
+}
